@@ -1,0 +1,87 @@
+page-testing {
+  h1 {
+    font-size: 23rem;
+    margin-top: -5rem;
+    margin-bottom: -5rem;
+  }
+  .score {
+    position: absolute;
+    top: 1.2rem;
+    left: 77%;
+    width: 3.5rem;
+    color: #FFFFFF;
+    padding: 2rem;
+    //margin: 2rem 2.5rem 5rem 2.5rem;
+    font-size: 1.6rem;
+    font-weight: lighter;
+    border-color: rgba(106, 255, 117, 0.0);
+    background-color: rgba(64, 255, 91, 0.7);
+  }
+  .wrong {
+    left: 10%;
+    border-color: rgba(255, 104, 124, 0.0);
+    background-color: rgba(255, 96, 122, 0.7);
+  }
+  .buttonsBox {
+
+    margin: 2rem auto auto auto;
+    //height: 27rem;
+    width: 80%;
+  }
+  .guessButton {
+    margin: 0.7rem 0rem 0.7rem 0rem;
+    width: 8rem;
+  }
+  .hint {
+    position: absolute;
+    alignment: center;
+    margin-top: -1rem;
+    font-weight: lighter;
+    font-size: 1.9rem;
+    padding: 2rem;
+  }
+
+  ion-spinner * {
+    width: 28px;
+    height: 52rem;
+  }
+
+  .endSlide {
+    h2 {
+      text-transform: uppercase;
+      font-size: 3rem;
+      margin-bottom: 2rem;
+    }
+
+    .endIcon {
+      font-size: 6.5rem;
+      color: rgba(64, 255, 91, 0.7);
+    }
+
+    .score {
+      position: initial;
+      width: 6.2rem;
+      color: #FFFFFF;
+      padding: 4.2rem;
+      margin: auto 2.5rem auto 2.5rem;
+      font-size: 3rem;
+      font-weight: lighter;
+    }
+
+  }
+
+  /*
+  ion-header {
+    .toolbar {
+      position: absolute;
+
+      .toolbar-background {
+        background: transparent;
+      }
+      .toolbar-title {
+        color: black;
+      }
+    }
+  }
+  */
+}

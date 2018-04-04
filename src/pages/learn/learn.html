@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Learn
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+
+    <ion-list-header>
+      Learning Settings
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label>Random order</ion-label>
+      <!--<ion-icon item-left name="shuffle"></ion-icon>-->
+      <ion-toggle color="secondary" [(ngModel)]="randomOrder" (ngModelChange)="randomOrderUpdate($event)"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Sound</ion-label>
+      <ion-toggle color="secondary"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Infinite</ion-label>
+      <!--<ion-icon item-left name="infinite"></ion-icon>-->
+      <ion-toggle color="secondary" [(ngModel)]="infinite" (ngModelChange)="infiniteUpdate($event)"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Hints</ion-label>
+      <!--<ion-icon item-left name="help"></ion-icon>-->
+      <ion-toggle color="secondary" [(ngModel)]="hints" (ngModelChange)="hintsUpdate($event)"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>{{(slide?.upper-slide?.lower)+1}} Symbols</ion-label>
+      <ion-range min="1" max="46" dualKnobs="true" pin="true" [(ngModel)]="slide" (ngModelChange)="slideChange($event)"
+                 color="primary">
+        <ion-label range-left style="font-size: 2rem">あ</ion-label>
+        <ion-label range-right style="font-size: 2rem">ん</ion-label>
+      </ion-range>
+    </ion-item>
+
+    <ion-row center>
+      <ion-col text-center>
+        <button class="startButton" ion-button round outline (click)="startLearning()">Start Learning</button>
+      </ion-col>
+    </ion-row>
+
+  </ion-list>
+
+</ion-content>

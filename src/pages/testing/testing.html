@@ -1,0 +1,59 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Testing
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content no-bounce>
+
+
+  <ion-row center *ngIf="!initDone()">
+    <ion-col text-center>
+      <ion-spinner color="danger"></ion-spinner>
+    </ion-col>
+  </ion-row>
+
+  <ion-slides #slider [initialSlide]="0" class="swiper-no-swiping" *ngIf="initDone()">
+    <ion-slide *ngFor="let n of numbers" [ngStyle]="{'background-color': getColor(n)}">
+
+      <button class="score wrong" ion-button round outline small color="dark" (click)="switchScore()">{{getScoreWrong()}}</button>
+      <button class="score" ion-button round outline small color="dark" (click)="switchScore()">{{getScoreRight()}}</button>
+
+      <h1>{{symbolData?.symbols[n].symbol}}</h1>
+
+      <ion-buttons class="buttonsBox">
+      <ion-row center>
+        <ion-col text-center *ngFor="let b of buttons">
+          <button ion-button round outline large class="guessButton" color="dark" (click)="guessClick(b, n, $event)"> {{symbolData?.symbols[getRandom(b, n)].sound}} </button>
+        </ion-col>
+      </ion-row>
+        <p class="hint" [hidden]="!hint">{{symbolData?.symbols[n].hint}}</p>
+      </ion-buttons>
+    </ion-slide>
+
+    <ion-slide class="endSlide">
+      <h2>Final score</h2>
+      <p>{{scoreWrong+scoreRight}} symbols</p>
+      <button class="score wrong" ion-button round outline small color="dark" (click)="switchScore()">{{getScoreWrong()}}</button>
+      <button class="score" ion-button round outline small color="dark" (click)="switchScore()">{{getScoreRight()}}</button>
+
+      <h3>{{getEndString()}}</h3>
+      <ion-icon class="endIcon" name="trophy"></ion-icon>
+      <ion-row center>
+        <ion-col text-center>
+          <button ion-button round outline (click)="startTest()">Try Again</button>
+        </ion-col>
+      </ion-row>
+    </ion-slide>
+
+
+  </ion-slides>
+
+
+
+
+</ion-content>

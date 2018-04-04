@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Test
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+
+    <ion-list-header>
+      Testing Settings
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label>Random order</ion-label>
+      <!--<ion-icon item-left name="shuffle"></ion-icon>-->
+      <ion-toggle color="secondary" [(ngModel)]="randomOrder" (ngModelChange)="randomOrderUpdate($event)"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Sound</ion-label>
+      <ion-toggle color="secondary"></ion-toggle>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>Difficulty {{diffString}} ({{diffRange}})</ion-label>
+      <ion-range min="2" max="12" step="2" snaps="true" color="primary" [(ngModel)]="diffRange"
+                 (ngModelChange)="rangeUpdate($event)">
+        <ion-icon range-left name="happy" color="secondary"></ion-icon>
+        <ion-icon range-right name="sad" color="danger"></ion-icon>
+      </ion-range>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>{{(slide?.upper-slide?.lower)+1}} Symbols</ion-label>
+      <ion-range min="1" max="46" dualKnobs="true" pin="true" [(ngModel)]="slide" (ngModelChange)="slideChange($event)"
+                 color="primary">
+        <ion-label range-left style="font-size: 2rem">あ</ion-label>
+        <ion-label range-right style="font-size: 2rem">ん</ion-label>
+      </ion-range>
+    </ion-item>
+
+    <ion-row center>
+      <ion-col text-center>
+        <button class="startButton" ion-button round outline (click)="startTest()">Start Test</button>
+      </ion-col>
+    </ion-row>
+
+
+  </ion-list>
+
+  <!--<h1 class="emoji" [hidden]="diffRange != 12">🙀</h1>-->
+
+</ion-content>

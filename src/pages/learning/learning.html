@@ -1,0 +1,30 @@
+<!--
+
+-->
+<ion-header>
+
+  <ion-navbar class="navbar">
+    <ion-title>Learning</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content no-bounce>
+
+  <ion-row center *ngIf="!initDone()">
+    <ion-col text-center>
+      <ion-spinner color="danger"></ion-spinner>
+    </ion-col>
+  </ion-row>
+
+  <ion-slides #slider loop="{{infinite}}" [initialSlide]="0" *ngIf="initDone()">
+    <ion-slide *ngFor="let n of numbers" [ngStyle]="{'background-color': getColor(n)}">
+      <h1>{{symbolData?.symbols[n].symbol}}</h1>
+      <h2>{{symbolData?.symbols[n].sound}}</h2>
+      <p class="hint" [hidden]="!hints">{{symbolData?.symbols[n].hint}}</p>
+      <p class="id">{{n+1}}</p>
+    </ion-slide>
+  </ion-slides>
+
+  </ion-content>
