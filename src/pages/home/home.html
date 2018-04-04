@@ -5,13 +5,57 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+
+  <header class="welcomeBox">
+    <h1>Learn Hiragana!</h1>
+    <p>
+      Welcome to the learn Hiragana app.
+    </p>
+    <p>
+      Press the Learn tab to learn the hiragana letters and their corresponding sounds.
+    </p>
+    <p>
+      Test yourself with the Test tab to measure your progress.
+    </p>
+    <h2>
+      あ い う え お か き く
+    </h2>
+  </header>
+
+
+  <ion-grid class="grids">
+    <ion-row>
+      <ion-col>
+        <h2>Clicks</h2>
+        <p class="stats clicks">{{storedTotalClicks}}</p>
+      </ion-col>
+      <ion-col>
+        <h2>Games</h2>
+        <p class="stats games">{{storedTotalGames}}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <h2>Points</h2>
+        <p class="stats points">{{storedTotalPoints}}</p>
+      </ion-col>
+      <ion-col>
+        <h2>Fails</h2>
+        <p class="stats fails">{{storedTotalFails}}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <h2>Success</h2>
+        <p class="stats success">{{getSuccessRate()}}%</p>
+      </ion-col>
+      <ion-col>
+        <h2>Failure</h2>
+        <p class="stats failure">{{getFailureRate()}}%</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <h3>{{getSkillString()}} <ion-icon item-left name="ribbon"></ion-icon></h3>
+
 </ion-content>

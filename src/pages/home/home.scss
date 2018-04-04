@@ -1,3 +1,64 @@
 page-home {
+  h1 {
+    text-align: center;
+  }
+  h2 {
+    text-align: center;
+    font-size: 2rem;
+  }
+  h3 {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: lighter;
+  }
+  p {
+    text-align: center;
+  }
+  .welcomeBox {
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .grids {
+    text-transform: uppercase;
+
+    ion-col {
+      border: 1rem;
+      border-radius: 1rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    .stats {
+
+      border-radius: 0.3rem;
+      color: #FFFFFF;
+      padding: 0.5rem;
+      margin: 0.4rem auto 1.5rem auto;
+    }
+
+    .clicks {
+      background-color: #579bee;
+    }
+    .games {
+      background-color: #eeac79;
+    }
+    .points {
+      background-color: #60eebc;
+    }
+    .fails {
+      background-color: #ee6461;
+    }
+    .success {
+      background-color: #4eee6f;
+    }
+    .failure {
+      background-color: #ee8ad1;
+    }
+  }
+
+
 
 }

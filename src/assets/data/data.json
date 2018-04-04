@@ -1,0 +1,281 @@
+{
+  "symbols": [
+    {
+      "id": "0",
+      "symbol": "あ",
+      "sound": "A",
+      "hint": "To remember this kana, find the capital 'A' inside of it."
+    },
+    {
+      "id": "1",
+      "symbol": "い",
+      "sound": "I",
+      "hint": "Think of a couple of eels (I) hanging out."
+    },
+    {
+      "id": "2",
+      "symbol": "う",
+      "sound": "U",
+      "hint": "Notice the sideways 'U' shape right in it."
+    },
+    {
+      "id": "3",
+      "symbol": "え",
+      "sound": "E",
+      "hint": "Think of it like an exotic (E) bird."
+    },
+    {
+      "id": "4",
+      "symbol": "お",
+      "sound": "O",
+      "hint": "You can see the letter 'o' in here two times."
+    },
+    {
+      "id": "5",
+      "symbol": "か",
+      "sound": "Ka",
+      "hint": "To remember this, think of someone who's doing the 'Can-Can' (Ka) dance."
+    },
+    {
+      "id": "6",
+      "symbol": "き",
+      "sound": "Ki",
+      "hint": "To remember this, notice how much it resembles a key (ki)."
+    },
+    {
+      "id": "7",
+      "symbol": "く",
+      "sound": "Ku",
+      "hint": "To remember this, think of this kana being the mouth of a coo-coo/cuckoo (Ku) bird."
+    },
+    {
+      "id": "8",
+      "symbol": "け",
+      "sound": "Ke",
+      "hint": "You'll have to use your imagination here, but this kana looks a lot like a keg (Ke)."
+    },
+    {
+      "id": "9",
+      "symbol": "こ",
+      "sound": "Ko",
+      "hint": "Ko is a couple of co-habitation (Ko) worms."
+    },
+    {
+      "id": "10",
+      "symbol": "さ",
+      "sound": "Sa",
+      "hint": "Looks like a weird sign (where the 'si' of 'sign' is pronounced like 'Sa')."
+    },
+    {
+      "id": "11",
+      "symbol": "し",
+      "sound": "Shi",
+      "hint": "It looks like long hair. She (Shi) has long hair."
+    },
+    {
+      "id": "12",
+      "symbol": "す",
+      "sound": "Su",
+      "hint": "Looks like superman (Su) flying."
+    },
+    {
+      "id": "13",
+      "symbol": "せ",
+      "sound": "Se",
+      "hint": "Looks like a syringe (sy/Se) in a arm."
+    },
+    {
+      "id": "14",
+      "symbol": "そ",
+      "sound": "So",
+      "hint": "This kana is just a songbird (so)."
+    },
+    {
+      "id": "15",
+      "symbol": "た",
+      "sound": "Ta",
+      "hint": "This looks just like the romaji that spells it out 'ta'."
+    },
+    {
+      "id": "16",
+      "symbol": "ち",
+      "sound": "Chi",
+      "hint": "Looks like a big chin (Chi)."
+    },
+    {
+      "id": "17",
+      "symbol": "つ",
+      "sound": "Tsu",
+      "hint": "Looks like a tsunami (Tsu) wave."
+    },
+    {
+      "id": "18",
+      "symbol": "て",
+      "sound": "Te",
+      "hint": "This kana looks like the uppercase letter 'T' where 'T' is for 'Te'."
+    },
+    {
+      "id": "19",
+      "symbol": "と",
+      "sound": "To",
+      "hint": "This kana looks like someone's toe (to) with a little nail or splinter in it."
+    },
+    {
+      "id": "20",
+      "symbol": "な",
+      "sound": "Na",
+      "hint": "The naughty (na) nun is praying in front of the cross, asking for forgiveness."
+    },
+    {
+      "id": "21",
+      "symbol": "に",
+      "sound": "Ni",
+      "hint": "Looks like a needle (ni) pulling the thread."
+    },
+    {
+      "id": "22",
+      "symbol": "ぬ",
+      "sound": "Nu",
+      "hint": "This kana looks like some noodles (nu)."
+    },
+    {
+      "id": "23",
+      "symbol": "ね",
+      "sound": "Ne",
+      "hint": "This is Nelly (Ne) the cat."
+    },
+    {
+      "id": "24",
+      "symbol": "の",
+      "sound": "No",
+      "hint": "Think of this as a 'No smoking' (No) sign."
+    },
+    {
+      "id": "25",
+      "symbol": "は",
+      "sound": "Ha",
+      "hint": "This kana looks like the uppercase letter 'H' plus the lowercase letter 'a' (Ha)."
+    },
+    {
+      "id": "26",
+      "symbol": "ひ",
+      "sound": "Hi",
+      "hint": "He (Hi) has a big nose."
+    },
+    {
+      "id": "27",
+      "symbol": "ふ",
+      "sound": "Fu/Hu",
+      "hint": "Freaky (Fu) hula (Hu) dancer."
+    },
+    {
+      "id": "28",
+      "symbol": "へ",
+      "sound": "He",
+      "hint": "Famous mountain Mt. Saint Helens (He)."
+    },
+    {
+      "id": "29",
+      "symbol": "ほ",
+      "sound": "Ho",
+      "hint": "Looks like a magician. Hocus (Ho) pocus."
+    },
+    {
+      "id": "30",
+      "symbol": "ま",
+      "sound": "Ma",
+      "hint": "Removing your head? Doubling your hands and arms? What sort of evil magic (Ma) is this?"
+    },
+    {
+      "id": "31",
+      "symbol": "み",
+      "sound": "Mi",
+      "hint": "Looks like lucky number 21. Who just hit the blackjack? Me (mi)."
+    },
+    {
+      "id": "32",
+      "symbol": "む",
+      "sound": "Mu",
+      "hint": "'Mooo' (mu), says the cow."
+    },
+    {
+      "id": "33",
+      "symbol": "め",
+      "sound": "Me",
+      "hint": "Look at that beautiful eye! It's so beautiful because of the makeup (Me) on it."
+    },
+    {
+      "id": "34",
+      "symbol": "も",
+      "sound": "Mo",
+      "hint": "You want to catch more (Mo) fish so you add more (Mo) worms to your hook."
+    },
+    {
+      "id": "35",
+      "symbol": "や",
+      "sound": "Ya",
+      "hint": "Do you see the yak (Ya) in this kana?"
+    },
+    {
+      "id": "36",
+      "symbol": "ゆ",
+      "sound": "Yu",
+      "hint": "This kana is a very unique (yu) looking fish."
+    },
+    {
+      "id": "37",
+      "symbol": "よ",
+      "sound": "Yo",
+      "hint": "The hitchhiker has his arm and thumb out. He's yelling 'YO!' (Yo)."
+    },
+    {
+      "id": "38",
+      "symbol": "ら",
+      "sound": "Ra",
+      "hint": "Looks like a rabbit (Ra)."
+    },
+    {
+      "id": "39",
+      "symbol": "り",
+      "sound": "Ri",
+      "hint": "The reeds (Ri) are swaying in the wind."
+    },
+    {
+      "id": "40",
+      "symbol": "る",
+      "sound": "Ru",
+      "hint": "There is a loop at the end. Are there no rules (Ru) on this road?"
+    },
+    {
+      "id": "41",
+      "symbol": "れ",
+      "sound": "Re",
+      "hint": "This looks like a guy kneeling on the ground, retching (Re) up his dinner."
+    },
+    {
+      "id": "42",
+      "symbol": "ろ",
+      "sound": "Ro",
+      "hint": "This kana is just a plain old road (Ro)."
+    },
+    {
+      "id": "43",
+      "symbol": "わ",
+      "sound": "Wa",
+      "hint": "This kana looks like a wasp (Wa) flying straight up."
+    },
+    {
+      "id": "44",
+      "symbol": "を",
+      "sound": "Wo",
+      "hint": "'Whoa!' (wo) yells the guy slipping on ice."
+    },
+    {
+      "id": "45",
+      "symbol": "ん",
+      "sound": "N",
+      "hint": "This kana looks just like the lowercase 'n' (N)."
+    }
+  ]
+}
+
