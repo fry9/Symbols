@@ -1,9 +1,9 @@
 <!--
 
 -->
-<ion-header>
+<ion-header class="navbar">
 
-  <ion-navbar class="navbar">
+  <ion-navbar>
     <ion-title>Learning</ion-title>
   </ion-navbar>
 
@@ -18,13 +18,25 @@
     </ion-col>
   </ion-row>
 
-  <ion-slides #slider loop="{{infinite}}" [initialSlide]="0" *ngIf="initDone()">
+  <ion-slides #slider loop="{{infinite}}" [initialSlide]="0" *ngIf="initDone()" (ionSlideTap)="slideClick()" (ionSlideDrag)="answerVisible = !tapShow;">
     <ion-slide *ngFor="let n of numbers" [ngStyle]="{'background-color': getColor(n)}">
       <h1>{{symbolData?.symbols[n].symbol}}</h1>
-      <h2>{{symbolData?.symbols[n].sound}}</h2>
-      <p class="hint" [hidden]="!hints">{{symbolData?.symbols[n].hint}}</p>
+      <h2 *ngIf="answerVisible">{{symbolData?.symbols[n].sound}}</h2>
+      <p *ngIf="answerVisible" class="hint" [hidden]="!hints">{{symbolData?.symbols[n].hint}}</p>
       <p class="id">{{n+1}}</p>
     </ion-slide>
+
+    <ion-slide class="endSlide" *ngIf="!infinite">
+      <h2>Good job</h2>
+
+      <ion-icon class="endIcon" name="thumbs-up"></ion-icon>
+      <ion-row center>
+        <ion-col text-center>
+          <button ion-button round outline (click)="startTest()">Take test</button>
+        </ion-col>
+      </ion-row>
+    </ion-slide>
+
   </ion-slides>
 
   </ion-content>

@@ -12,6 +12,7 @@ export class LearnPage {
   randomOrder: boolean;
   infinite: boolean;
   hints: boolean;
+  tapShow: boolean;
   slide: any;
 
   constructor(public navCtrl: NavController, private storage: Storage) {
@@ -31,6 +32,11 @@ export class LearnPage {
       this.slide = slideVal;
     });
 
+    storage.get('tapShowLearn').then((tapShowVal) => {
+      console.log('tapShow = ', tapShowVal);
+      this.tapShow = tapShowVal;
+    });
+
     storage.get('randomOrderLearn').then((randomOrderVal) => {
       console.log('random order = ', randomOrderVal);
       if (randomOrderVal == null) {
@@ -38,6 +44,8 @@ export class LearnPage {
         storage.set('infiniteLearn', 'false');
         storage.set('hintsLearn', 'false');
         storage.set('slideLearn', { lower: 1, upper: 46 });
+        storage.set('tapShowLearn', 'false');
+        this.tapShow = false;
         this.randomOrder = false;
         this.infinite = false;
         this.hints = false;
@@ -62,10 +70,44 @@ export class LearnPage {
   slideChange(event) {
     this.storage.set('slideLearn', event);
   }
+  tapShowCahnge(event) {
+    this.storage.set('tapShowLearn', event);
+  }
 
 
   startLearning() {
     this.navCtrl.push(LearningPage);
+  }
+
+  copy() {
+
+
+    this.storage.get('slideTest').then((slideVal) => {
+      console.log('slide = ', slideVal);
+      this.slide = slideVal;
+      this.storage.set('slideLearn', this.slide);
+    });
+
+    this.storage.get('tapShowTest').then((tapShowVal) => {
+      console.log('tapShow = ', tapShowVal);
+      this.tapShow = tapShowVal;
+      this.storage.set('tapShowLearn', this.tapShow);
+    });
+
+
+    this.storage.get('randomOrderTest').then((randomOrderVal) => {
+      console.log('random order = ', randomOrderVal);
+      if (randomOrderVal == null) {
+        this.storage.set('randomOrderTest', 'false');
+        this.storage.set('diffRangeTest', 6);
+        this.storage.set('slideTest', { lower: 1, upper: 46 });
+        this.randomOrder = false;
+        this.slide = { lower: 1, upper: 46 };
+      } else {
+        this.randomOrder = randomOrderVal;
+        this.storage.set('randomOrderLearn', this.randomOrder);
+      }
+    });
   }
 
 }

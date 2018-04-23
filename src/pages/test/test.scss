@@ -8,4 +8,9 @@ page-test {
     text-align: center;
     font-size: 20rem;
   }
+
+  .test {
+    color:  white;
+    background-color: map-get($colors, danger);
+  }
 }

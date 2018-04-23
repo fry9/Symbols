@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {IonicPage, NavController, NavParams, Slides} from 'ionic-angular';
+import {IonicPage, NavController, NavParams, Slides, Tabs} from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
 
@@ -16,11 +16,13 @@ export class LearningPage {
   @ViewChild('slider') private slider: Slides;
   numbers: any = [];
 
+  tapShow: boolean;
   randomOrder: boolean;
   infinite: boolean;
   hints: boolean;
   slideRange: any;
 
+  answerVisible: boolean = false;
   loadDone: boolean = false;
   randomDone: boolean = false;
 
@@ -35,6 +37,12 @@ export class LearningPage {
     storage.get('hintsLearn').then((hintsVal) => {
       console.log('hints = ', hintsVal);
       this.hints = hintsVal;
+    });
+
+    storage.get('tapShowLearn').then((tapShowVal) => {
+      console.log('tapShow = ', tapShowVal);
+      this.tapShow = tapShowVal;
+      this.answerVisible = !this.tapShow;
     });
 
     storage.get('slideLearn').then((slideVal) => {
@@ -97,7 +105,21 @@ export class LearningPage {
     return array;
   }
 
+  startTest() {
+    this.navCtrl.parent.select(2);
+    this.navCtrl.pop();
+  }
 
+  slideClick() {
+    if (this.answerVisible) {
+      this.answerVisible = !this.tapShow;
+      this.slider.slideNext();
+    } else {
+      this.answerVisible = true;
+    }
+
+
+  }
 
 
 }

@@ -24,4 +24,31 @@ page-learning {
     height: 52rem;
   }
 
+  .endSlide {
+    h2 {
+      text-transform: uppercase;
+      font-size: 3rem;
+      margin-bottom: 2rem;
+    }
+
+    .endIcon {
+      font-size: 6.5rem;
+      color: rgba(64, 255, 91, 0.7);
+    }
+
+    .score {
+      position: initial;
+      width: 6.2rem;
+      color: #FFFFFF;
+      padding: 4.2rem;
+      margin: auto 2.5rem auto 2.5rem;
+      font-size: 3rem;
+      font-weight: lighter;
+    }
+
+  }
+
+  .navbar {
+  }
+
 }

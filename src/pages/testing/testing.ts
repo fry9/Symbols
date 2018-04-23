@@ -1,5 +1,5 @@
-import {Component, ViewChild} from '@angular/core';
-import {IonicPage, NavController, NavParams, Slides} from 'ionic-angular';
+import {Component, Renderer2, ViewChild} from '@angular/core';
+import {Button, IonicPage, NavController, NavParams, Slides} from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
 import {Vibration} from "@ionic-native/vibration";
@@ -15,12 +15,17 @@ export class TestingPage {
   dataUrl = 'assets/data/data.json';
 
   @ViewChild('slider') private slider: Slides;
+  @ViewChild('wrongBtn') private wrongBtn: Button;
+  @ViewChild('rightBtn') private rightBtn: Button;
   numbers: any = [];
   randoms: any = [];
   randNum: any = [];
+  wrongGuessButtons: any [];
 
   scoreRight: number = 0;
   scoreWrong: number = 0;
+  scoreWrongAnimToggle: boolean = false;
+  scoreRightAnimToggle: boolean = false;
   scoreToggle: boolean = true;
 
   randomOrder: boolean;
@@ -39,9 +44,15 @@ export class TestingPage {
   storedTotalFails: number;
   storedTotalGames: number;
 
+  answerVisible: boolean = false;
+  buttonBox: boolean = true;
+  tapShow: boolean;
+
+  endScreen: boolean = false;
+
   endStrings: any = ["Horrible!", "Better luck next time", "You might need some practice", "You can do better!", "Good job!", "Wow such masterful skill", "God mode achieved!"];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient, private storage: Storage, private vibration: Vibration) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient, private storage: Storage, private vibration: Vibration, public renderer: Renderer2) {
 
     storage.get('diffRangeTest').then((diffRangeVal) => {
       console.log('diffRangeTest = ', diffRangeVal);
@@ -49,6 +60,13 @@ export class TestingPage {
       if(this.numButtons == null)
         this.numButtons = 6;
       this.buttons = Array(this.numButtons).fill(0).map((x,i)=>i);
+      this.wrongGuessButtons = Array(this.numButtons).fill(false);
+    });
+
+    storage.get('tapShowTest').then((tapShowVal) => {
+      console.log('tapShow = ', tapShowVal);
+      this.tapShow = tapShowVal;
+      this.answerVisible = !this.tapShow;
     });
 
     storage.get('storedTotalClicks').then((storedTotalClicksVal) => {
@@ -95,7 +113,26 @@ export class TestingPage {
     return this.randoms[n][btn];
   }
 
+  setRandom() {
 
+    for (let n=this.slideRange.lower; n<=this.slideRange.upper; n++) {
+      this.randoms.push(n);
+      let numberArr = Array(45).fill(0).map((x,i)=>i);
+      numberArr.splice(n,1);
+      this.randNum = [];
+
+      for(let i=0; i<this.numButtons; i++) {
+        this.randNum.push(numberArr.splice(Math.floor((Math.random()*numberArr.length)), 1));
+      }
+
+      this.randoms[n] = this.randNum;
+      this.randoms[n][Math.floor((Math.random()*(this.numButtons)))] = n;
+    }
+
+    this.buttonsDone = true;
+  }
+
+  /*
   setRandom() {
     for (let n=this.slideRange.lower; n<=this.slideRange.upper; n++) {
       this.randoms.push(n);
@@ -103,8 +140,8 @@ export class TestingPage {
 
       for(let i=0; i<this.numButtons; i++) {
         this.randNum.push(Math.floor((Math.random()*45)));
-        for(let j=0; j<i; j++) {
 
+        for(let j=0; j<i; j++) {
           if ((this.randNum[i] == this.randNum[j]) || (this.randNum[i] == n)) {
             this.randNum[i] = Math.floor((Math.random()*45));
             j=0;
@@ -118,6 +155,40 @@ export class TestingPage {
     }
     this.buttonsDone = true;
   }
+  */
+
+  animWrong() {
+    this.scoreRightAnimToggle = true;
+    this.renderer.removeClass(this.rightBtn.getNativeElement(), 'rightAnim');
+    this.renderer.removeClass(this.rightBtn.getNativeElement(), 'rightAnim2');
+
+    if(this.scoreWrongAnimToggle) {
+      this.renderer.removeClass(this.wrongBtn.getNativeElement(), 'wrongAnim');
+      this.renderer.addClass(this.wrongBtn.getNativeElement(), 'wrongAnim2');
+      this.scoreWrongAnimToggle = false;
+    } else {
+      this.renderer.removeClass(this.wrongBtn.getNativeElement(), 'wrongAnim2');
+      this.renderer.addClass(this.wrongBtn.getNativeElement(), 'wrongAnim');
+      this.scoreWrongAnimToggle = true;
+    }
+
+  }
+
+  animRight() {
+    this.scoreWrongAnimToggle = true;
+    this.renderer.removeClass(this.wrongBtn.getNativeElement(), 'wrongAnim');
+    this.renderer.removeClass(this.wrongBtn.getNativeElement(), 'wrongAnim2');
+
+    if(this.scoreRightAnimToggle) {
+      this.renderer.removeClass(this.rightBtn.getNativeElement(), 'rightAnim');
+      this.renderer.addClass(this.rightBtn.getNativeElement(), 'rightAnim2');
+      this.scoreRightAnimToggle = false;
+    } else {
+      this.renderer.removeClass(this.rightBtn.getNativeElement(), 'rightAnim2');
+      this.renderer.addClass(this.rightBtn.getNativeElement(), 'rightAnim');
+      this.scoreRightAnimToggle = true;
+    }
+  }
 
   guessClick(btn, n, e) {
     this.storedTotalClicks++;
@@ -127,14 +198,19 @@ export class TestingPage {
       this.failsInRowCounter = 0;
       this.scoreRight++;
       this.storedTotalPoints++;
+      this.wrongGuessButtons = Array(this.numButtons).fill(false);
       this.storage.set('storedTotalClicks', this.storedTotalClicks);
       this.storage.set('storedTotalPoints', this.storedTotalPoints);
       this.storage.set('storedTotalFails', this.storedTotalFails);
+      this.animRight();
+      this.answerVisible = !this.tapShow;
     } else {
+      this.wrongGuessButtons[btn] = true;
       this.failsInRowCounter++;
       this.storedTotalFails++;
       this.scoreWrong++;
       this.vibration.vibrate(200);
+      this.animWrong();
       if ((this.failsInRowCounter >= (this.numButtons-1)) && (this.numButtons<=8)) {
         this.hint = true;
       }
@@ -166,52 +242,64 @@ export class TestingPage {
     return array;
   }
 
-initDone() {
-  if (this.buttonsDone == true ) {
-    if (this.randomOrder == false) {
-      return true;
-    } else if (this.randomDone == true) {
-      return true;
+  initDone() {
+    if (this.buttonsDone == true ) {
+      if (this.randomOrder == false) {
+        return true;
+      } else if (this.randomDone == true) {
+        return true;
+      }
     }
   }
-}
 
-startTest() {
-  this.navCtrl.pop();
-}
 
-switchScore() {
-   this.scoreToggle=!this.scoreToggle;
-}
+  startTest() {
+    this.navCtrl.pop();
+  }
 
-getScoreWrong() {
+  switchScore() {
+    this.scoreToggle=!this.scoreToggle;
+  }
+
+  getScoreWrong() {
     if (this.scoreToggle) {
       return this.scoreWrong;
     } else {
       return Math.round((this.scoreWrong/(this.scoreRight+this.scoreWrong))*100) + '%';
     }
-}
-
-getScoreRight() {
-  if (this.scoreToggle) {
-    return this.scoreRight
-  } else {
-    return Math.round((this.scoreRight/(this.scoreRight+this.scoreWrong))*100) + '%';
   }
-}
 
-getEndString() {
-  let slidesLength = (this.slideRange.upper-this.slideRange.lower)+1;
-  if (slidesLength <= 10) {
-    let index = Math.floor(this.scoreRight/(this.scoreRight+this.scoreWrong)*3);
-    return this.endStrings[index];
-  } else if (slidesLength <= 45) {
-    let index = Math.floor(this.scoreRight/(this.scoreRight+this.scoreWrong)*5);
+  getScoreRight() {
+    if (this.scoreToggle) {
+      return this.scoreRight
+    } else {
+      return Math.round((this.scoreRight/(this.scoreRight+this.scoreWrong))*100) + '%';
+    }
+  }
+
+  getEndString() {
+    this.endScreen = true;
+    let slidesLength = (this.slideRange.upper-this.slideRange.lower)+1;
+    if (slidesLength <= 10) {
+      let index = Math.floor(this.scoreRight/(this.scoreRight+this.scoreWrong)*3);
+      return this.endStrings[index];
+    } else if (slidesLength <= 45) {
+      let index = Math.floor(this.scoreRight/(this.scoreRight+this.scoreWrong)*5);
+      return this.endStrings[index];
+    }
+    let index = Math.floor(this.scoreRight/(this.scoreRight+this.scoreWrong)*6);
     return this.endStrings[index];
   }
-  let index = Math.floor(this.scoreRight/(this.scoreRight+this.scoreWrong)*6);
-  return this.endStrings[index];
-}
+
+  slideClick() {
+    if (!this.answerVisible && this.buttonBox) {
+      this.answerVisible = true;
+      this.buttonBox = false;
+    } else if (!this.answerVisible) {
+      this.buttonBox = true;
+    }
+  }
+
 
 }
 

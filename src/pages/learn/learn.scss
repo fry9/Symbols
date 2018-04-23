@@ -4,4 +4,9 @@ page-learn {
     margin-top: 3rem;
   }
 
+  .learn {
+    color:  white;
+    background-color: map-get($colors, secondary);
+  }
+
 }
