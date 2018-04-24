@@ -21,6 +21,8 @@
   <ion-slides #slider loop="{{infinite}}" [initialSlide]="0" *ngIf="initDone()" (ionSlideTap)="slideClick()" (ionSlideDrag)="answerVisible = !tapShow;">
     <ion-slide *ngFor="let n of numbers" [ngStyle]="{'background-color': getColor(n)}">
       <h1>{{symbolData?.symbols[n].symbol}}</h1>
+      <h2 *ngIf="!answerVisible" class="hidden">{{symbolData?.symbols[n].sound}}</h2>
+      <p *ngIf="!answerVisible" class="hint hidden" [hidden]="!hints">{{symbolData?.symbols[n].hint}}</p>
       <h2 *ngIf="answerVisible">{{symbolData?.symbols[n].sound}}</h2>
       <p *ngIf="answerVisible" class="hint" [hidden]="!hints">{{symbolData?.symbols[n].hint}}</p>
       <p class="id">{{n+1}}</p>

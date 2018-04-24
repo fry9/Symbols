@@ -26,6 +26,14 @@
 
       <h1>{{symbolData?.symbols[n].symbol}}</h1>
 
+      <ion-buttons class="buttonsBox hidden"  *ngIf="!answerVisible">
+        <ion-row center>
+          <ion-col text-center *ngFor="let b of buttons">
+            <button ion-button round outline large class="guessButton" color="dark"> </button>
+          </ion-col>
+        </ion-row>
+      </ion-buttons>
+
       <ion-buttons class="buttonsBox"  *ngIf="answerVisible">
       <ion-row center>
         <ion-col text-center *ngFor="let b of buttons">
